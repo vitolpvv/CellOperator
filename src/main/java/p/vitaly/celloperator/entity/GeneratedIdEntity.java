@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Data
 @MappedSuperclass
-abstract class GeneratedIdEntity implements Serializable {
+public abstract class GeneratedIdEntity implements Serializable {
 
     @Id
     @GeneratedValue

@@ -1,7 +1,9 @@
-package p.vitaly.celloperator.entity;
+package p.vitaly.celloperator.entity.user;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import p.vitaly.celloperator.entity.GeneratedIdEntity;
+import p.vitaly.celloperator.entity.contract.ContractEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +14,7 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "user", schema = "celloperator")
-class UserEntity extends GeneratedIdEntity implements Serializable {
+public class UserEntity extends GeneratedIdEntity implements Serializable {
 
     @Column(name = "firstname", nullable = false)
     private String firstname;

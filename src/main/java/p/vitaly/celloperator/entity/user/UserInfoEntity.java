@@ -1,7 +1,8 @@
-package p.vitaly.celloperator.entity;
+package p.vitaly.celloperator.entity.user;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import p.vitaly.celloperator.entity.GeneratedIdEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "user_info",schema = "celloperator")
-class UserInfoEntity extends GeneratedIdEntity implements Serializable {
+public class UserInfoEntity extends GeneratedIdEntity implements Serializable {
 
     @Column(name = "birthday", nullable = false)
     private LocalDate bithday;

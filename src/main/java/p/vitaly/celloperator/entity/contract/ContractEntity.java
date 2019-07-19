@@ -1,7 +1,11 @@
-package p.vitaly.celloperator.entity;
+package p.vitaly.celloperator.entity.contract;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import p.vitaly.celloperator.entity.GeneratedIdEntity;
+import p.vitaly.celloperator.entity.option.OptionEntity;
+import p.vitaly.celloperator.entity.tariff.TariffEntity;
+import p.vitaly.celloperator.entity.user.UserEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +16,7 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "contract", schema = "celloperator")
-class ContractEntity extends GeneratedIdEntity implements Serializable {
+public class ContractEntity extends GeneratedIdEntity implements Serializable {
 
     @Column(name = "number", nullable = false, unique = true)
     private String number;

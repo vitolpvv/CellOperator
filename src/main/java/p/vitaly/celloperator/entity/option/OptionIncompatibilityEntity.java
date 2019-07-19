@@ -1,7 +1,8 @@
-package p.vitaly.celloperator.entity;
+package p.vitaly.celloperator.entity.option;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import p.vitaly.celloperator.entity.GeneratedIdEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;

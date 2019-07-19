@@ -1,7 +1,8 @@
-package p.vitaly.celloperator.entity;
+package p.vitaly.celloperator.entity.user;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import p.vitaly.celloperator.entity.GeneratedIdEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "credential", schema = "celloperator")
-class CredentialEntity extends GeneratedIdEntity implements Serializable {
+public class CredentialEntity extends GeneratedIdEntity implements Serializable {
 
     @Column(name = "pwd_md5", nullable = false)
     private String password;
