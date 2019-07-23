@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "contact_blocked", schema = "celloperator")
+@Table(name = "contract_blocked", schema = "celloperator")
 public class BlockedContractEntity extends GeneratedIdEntity {
 
     @OneToOne
@@ -18,6 +18,6 @@ public class BlockedContractEntity extends GeneratedIdEntity {
     private ContractEntity contract;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "initiator_id", nullable = false)
     private UserEntity user;
 }
