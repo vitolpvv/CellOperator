@@ -6,7 +6,6 @@ import p.vitaly.celloperator.entity.GeneratedIdEntity;
 import p.vitaly.celloperator.entity.contract.ContractEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "user", schema = "celloperator")
-public class UserEntity extends GeneratedIdEntity implements Serializable {
+public class UserEntity extends GeneratedIdEntity {
 
     @Column(name = "firstname", nullable = false)
     private String firstname;

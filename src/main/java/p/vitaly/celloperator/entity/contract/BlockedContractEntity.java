@@ -6,13 +6,12 @@ import p.vitaly.celloperator.entity.GeneratedIdEntity;
 import p.vitaly.celloperator.entity.user.UserEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Data
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "contact_blocked", schema = "celloperator")
-public class BlockedContractEntity extends GeneratedIdEntity implements Serializable {
+public class BlockedContractEntity extends GeneratedIdEntity {
 
     @OneToOne
     @JoinColumn(name = "contract_id", nullable = false, unique = true)

@@ -8,7 +8,6 @@ import p.vitaly.celloperator.entity.tariff.TariffEntity;
 import p.vitaly.celloperator.entity.user.UserEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "contract", schema = "celloperator")
-public class ContractEntity extends GeneratedIdEntity implements Serializable {
+public class ContractEntity extends GeneratedIdEntity {
 
     @Column(name = "number", nullable = false, unique = true)
     private String number;

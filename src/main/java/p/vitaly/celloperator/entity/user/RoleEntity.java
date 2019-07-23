@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "role", schema = "celloperator")
-public class RoleEntity extends GeneratedIdEntity implements Serializable {
+public class RoleEntity extends GeneratedIdEntity {
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;

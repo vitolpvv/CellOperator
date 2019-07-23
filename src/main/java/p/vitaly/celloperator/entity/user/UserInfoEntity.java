@@ -5,14 +5,13 @@ import lombok.EqualsAndHashCode;
 import p.vitaly.celloperator.entity.GeneratedIdEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "user_info",schema = "celloperator")
-public class UserInfoEntity extends GeneratedIdEntity implements Serializable {
+public class UserInfoEntity extends GeneratedIdEntity {
 
     @Column(name = "birthday", nullable = false)
     private LocalDate bithday;

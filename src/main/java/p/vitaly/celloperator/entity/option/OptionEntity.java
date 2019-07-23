@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import p.vitaly.celloperator.entity.GeneratedIdEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "option", schema = "celloperator")
-public class OptionEntity extends GeneratedIdEntity implements Serializable {
+public class OptionEntity extends GeneratedIdEntity {
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
@@ -32,7 +31,7 @@ public class OptionEntity extends GeneratedIdEntity implements Serializable {
     @JoinColumn(name = "parent_option_id")
     private OptionEntity parent;
 
-    @OneToMany(mappedBy = "parent", orphanRemoval = true)
+    @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OptionEntity> children = new ArrayList<>();
 
     public void addChild(OptionEntity option) {
