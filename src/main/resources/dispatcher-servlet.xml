@@ -44,5 +44,5 @@
     </bean>
     
     <tx:annotation-driven transaction-manager="coTransactionManager"/>
-    <mvc:resources mapping="/resources/**" location="resources"/>
+    <mvc:resources mapping="/resources/**" location="WEB-INF/resources/"/>
 </beans>
