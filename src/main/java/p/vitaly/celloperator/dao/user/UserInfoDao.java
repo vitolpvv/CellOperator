@@ -6,8 +6,8 @@ import p.vitaly.celloperator.entity.user.UserInfoEntity;
 
 @Repository
 public class UserInfoDao extends DaoImpl<UserInfoEntity> {
-    @Override
-    protected Class<UserInfoEntity> getEntityType() {
-        return UserInfoEntity.class;
+
+    public UserInfoDao() {
+        super(UserInfoEntity.class);
     }
 }

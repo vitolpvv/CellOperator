@@ -6,8 +6,8 @@ import p.vitaly.celloperator.entity.user.CredentialEntity;
 
 @Repository
 public class CredentialDao extends DaoImpl<CredentialEntity> {
-    @Override
-    protected Class<CredentialEntity> getEntityType() {
-        return CredentialEntity.class;
+
+    public CredentialDao() {
+        super(CredentialEntity.class);
     }
 }

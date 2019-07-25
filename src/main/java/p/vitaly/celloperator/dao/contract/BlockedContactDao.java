@@ -6,8 +6,8 @@ import p.vitaly.celloperator.entity.contract.BlockedContractEntity;
 
 @Repository
 public class BlockedContactDao extends DaoImpl<BlockedContractEntity> {
-    @Override
-    protected Class<BlockedContractEntity> getEntityType() {
-        return BlockedContractEntity.class;
+
+    public BlockedContactDao() {
+        super(BlockedContractEntity.class);
     }
 }

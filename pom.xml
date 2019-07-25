@@ -16,14 +16,18 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <spring.version>5.1.7.RELEASE</spring.version>
-    <hibernate.version>5.4.2.Final</hibernate.version>
+    <hibernate.version>5.4.3.Final</hibernate.version>
+    <lombok.version>1.18.8</lombok.version>
+    <mysql.version>8.0.16</mysql.version>
+    <jstl.version>1.2</jstl.version>
+    <junit.version>4.12</junit.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.8</version>
+      <version>${lombok.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -34,7 +38,12 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.16</version>
+      <version>${mysql.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -46,10 +55,20 @@
       <artifactId>spring-webmvc</artifactId>
       <version>${spring.version}</version>
     </dependency>
+    <!--dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+    </dependency-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>${jstl.version}</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -59,14 +78,30 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <!--configuration>
+          <excludes>
+            <exclude>**/service/OptionService.java</exclude>
+            <exclude>**/service/TariffService.java</exclude>
+            <exclude>**/service/UserService.java</exclude>
+            <exclude>**/service/RoleService.java</exclude>
+          </excludes>
+        </configuration-->
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.2</version>
+        <version>3.2.3</version>
+        <!--configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration-->
       </plugin>
       <plugin>
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
         <version>3.6.0.1398</version>
-        <!--executions>
+        <executions>
           <execution>
             <id>sonar-package</id>
             <phase>package</phase>
@@ -74,7 +109,7 @@
               <goal>sonar</goal>
             </goals>
           </execution>
-        </executions-->
+        </executions>
       </plugin>
     </plugins>
   </build>

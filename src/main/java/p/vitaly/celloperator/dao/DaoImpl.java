@@ -8,10 +8,14 @@ import java.util.List;
 
 public abstract class DaoImpl<T extends Entity> implements Dao<T, Integer> {
 
-    private final Class<T> type = getEntityType();
-
     @PersistenceContext
     EntityManager em;
+
+    private final Class<T> entityClass;
+
+    protected DaoImpl(Class<T> entityClass) {
+        this.entityClass = entityClass;
+    }
 
     @Override
     public void add(T entity) {
@@ -40,13 +44,11 @@ public abstract class DaoImpl<T extends Entity> implements Dao<T, Integer> {
 
     @Override
     public T get(Integer id) {
-        return em.find(type, id);
+        return em.find(entityClass, id);
     }
 
     @Override
     public List<T> getAll() {
-        return em.createQuery("from " + type, type).getResultList();
+        return em.createQuery("from " + entityClass.getName(), entityClass).getResultList();
     }
-
-    protected abstract Class<T> getEntityType();
 }

@@ -1,6 +1,6 @@
 package p.vitaly.celloperator.service;
 
-import p.vitaly.celloperator.dao.DaoImpl;
+import p.vitaly.celloperator.dao.Dao;
 import p.vitaly.celloperator.dto.Dto;
 import p.vitaly.celloperator.entity.Entity;
 import p.vitaly.celloperator.service.converter.Converter;
@@ -10,10 +10,10 @@ import java.util.List;
 
 public abstract class ServiceImpl<T extends Entity, S extends Dto> implements Service<S, Integer> {
 
-    private final DaoImpl<T> dao;
-    private final Converter<T, S> converter;
+    protected Dao<T, Integer> dao;
+    protected Converter<T, S> converter;
 
-    protected ServiceImpl(DaoImpl<T> dao, Converter<T, S> converter) {
+    protected ServiceImpl(Dao<T, Integer> dao, Converter<T, S> converter) {
         this.dao = dao;
         this.converter = converter;
     }

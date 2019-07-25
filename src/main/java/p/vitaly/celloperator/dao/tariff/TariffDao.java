@@ -6,8 +6,8 @@ import p.vitaly.celloperator.entity.tariff.TariffEntity;
 
 @Repository
 public class TariffDao extends DaoImpl<TariffEntity> {
-    @Override
-    protected Class<TariffEntity> getEntityType() {
-        return TariffEntity.class;
+
+    public TariffDao() {
+        super(TariffEntity.class);
     }
 }

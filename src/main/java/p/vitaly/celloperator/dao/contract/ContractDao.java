@@ -6,8 +6,8 @@ import p.vitaly.celloperator.entity.contract.ContractEntity;
 
 @Repository
 public class ContractDao extends DaoImpl<ContractEntity> {
-    @Override
-    protected Class<ContractEntity> getEntityType() {
-        return ContractEntity.class;
+
+    public ContractDao() {
+        super(ContractEntity.class);
     }
 }

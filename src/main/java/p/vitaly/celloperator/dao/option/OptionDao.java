@@ -6,8 +6,8 @@ import p.vitaly.celloperator.entity.option.OptionEntity;
 
 @Repository
 public class OptionDao extends DaoImpl<OptionEntity> {
-    @Override
-    protected Class<OptionEntity> getEntityType() {
-        return OptionEntity.class;
+
+    public OptionDao() {
+        super(OptionEntity.class);
     }
 }

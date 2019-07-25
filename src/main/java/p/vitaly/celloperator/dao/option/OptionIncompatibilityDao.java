@@ -6,8 +6,8 @@ import p.vitaly.celloperator.entity.option.OptionIncompatibilityEntity;
 
 @Repository
 public class OptionIncompatibilityDao extends DaoImpl<OptionIncompatibilityEntity> {
-    @Override
-    protected Class<OptionIncompatibilityEntity> getEntityType() {
-        return OptionIncompatibilityEntity.class;
+
+    public OptionIncompatibilityDao() {
+        super(OptionIncompatibilityEntity.class);
     }
 }

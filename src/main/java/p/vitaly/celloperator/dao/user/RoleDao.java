@@ -6,8 +6,8 @@ import p.vitaly.celloperator.entity.user.RoleEntity;
 
 @Repository
 public class RoleDao extends DaoImpl<RoleEntity> {
-    @Override
-    protected Class<RoleEntity> getEntityType() {
-        return RoleEntity.class;
+
+    public RoleDao() {
+        super(RoleEntity.class);
     }
 }
