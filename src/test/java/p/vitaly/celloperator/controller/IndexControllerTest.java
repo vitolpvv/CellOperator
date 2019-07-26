@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("../../../../../webapp/WEB-INF/web.xml")
-@ContextConfiguration(locations = {"classpath:dispatcher-servlet.xml"})
+@ContextConfiguration(locations = {"classpath:config/dispatcher-servlet.xml"})
 public class IndexControllerTest {
 
     @Autowired

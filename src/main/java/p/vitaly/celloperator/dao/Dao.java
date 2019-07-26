@@ -1,10 +1,13 @@
 package p.vitaly.celloperator.dao;
 
-import p.vitaly.celloperator.entity.Entity;
-
 import java.util.List;
 
-public interface Dao<T extends Entity, K> {
+/**
+ * Data Access Object interface.
+ * @param <T> - 'db entity' class.
+ * @param <K> - 'Primary Key' class
+ */
+public interface Dao<T, K> {
     void add(T entity);
     void update(T entity);
     void remove(T entity);

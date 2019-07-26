@@ -20,6 +20,7 @@
     <lombok.version>1.18.8</lombok.version>
     <mysql.version>8.0.16</mysql.version>
     <jstl.version>1.2</jstl.version>
+    <servlet.version>3.0.1</servlet.version>
     <junit.version>4.12</junit.version>
   </properties>
 
@@ -58,7 +59,7 @@
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
+      <version>${servlet.version}</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -75,6 +76,7 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -98,15 +100,12 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.3</version>
-        <!--configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration-->
       </plugin>
       <plugin>
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
         <version>3.6.0.1398</version>
-        <!--executions>
+        <executions>
           <execution>
             <id>sonar-package</id>
             <phase>package</phase>
@@ -114,7 +113,7 @@
               <goal>sonar</goal>
             </goals>
           </execution>
-        </executions-->
+        </executions>
       </plugin>
     </plugins>
   </build>

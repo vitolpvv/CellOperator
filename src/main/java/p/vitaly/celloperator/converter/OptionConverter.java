@@ -1,4 +1,4 @@
-package p.vitaly.celloperator.service.converter;
+package p.vitaly.celloperator.converter;
 
 import org.springframework.stereotype.Component;
 import p.vitaly.celloperator.dto.option.OptionDto;
