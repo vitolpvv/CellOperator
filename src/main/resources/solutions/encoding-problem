@@ -25,7 +25,7 @@
     </filter-mapping>
 </web-app>
 
-б) Java-config (не проверял, т.к. использую XML-config)
+б) Java-config
 
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
     ...
