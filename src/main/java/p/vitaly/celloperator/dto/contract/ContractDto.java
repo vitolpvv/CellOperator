@@ -1,6 +1,7 @@
 package p.vitaly.celloperator.dto.contract;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 import p.vitaly.celloperator.dto.option.OptionDto;
 import p.vitaly.celloperator.dto.tariff.TariffDto;
 import p.vitaly.celloperator.dto.user.UserDto;

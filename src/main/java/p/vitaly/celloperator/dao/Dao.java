@@ -11,6 +11,7 @@ public interface Dao<T, K> {
     void add(T entity);
     void update(T entity);
     void remove(T entity);
+    void removeWith(K id);
     T get(K id);
     List<T> getAll();
 }

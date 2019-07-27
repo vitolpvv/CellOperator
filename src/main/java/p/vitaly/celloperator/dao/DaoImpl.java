@@ -21,27 +21,26 @@ public abstract class DaoImpl<T> implements Dao<T, Integer> {
 
     @Override
     public void add(T entity) {
-//        em.getTransaction().begin();
         em.persist(entity);
-//        em.getTransaction().commit();
     }
 
     @Override
     public void update(T entity) {
-//        em.getTransaction().begin();
         em.merge(entity);
-//        em.getTransaction().commit();
 
     }
 
     @Override
     public void remove(T entity) {
-//        em.getTransaction().begin();
         if (!em.contains(entity)) {
             em.merge(entity);
         }
         em.remove(entity);
-//        em.getTransaction().commit();
+    }
+
+    @Override
+    public void removeWith(Integer id) {
+        em.createQuery("delete from " + entityClass.getName() + " e where e.id=" + id).executeUpdate();
     }
 
     @Override

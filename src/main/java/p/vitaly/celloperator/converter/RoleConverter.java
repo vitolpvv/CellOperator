@@ -13,6 +13,9 @@ public class RoleConverter implements Converter<RoleEntity, RoleDto> {
 
     @Override
     public RoleEntity toEntity(RoleDto dto) {
-        return null;
+        RoleEntity role = new RoleEntity();
+        role.setId(dto.getId());
+        role.setName(dto.getName());
+        return role;
     }
 }

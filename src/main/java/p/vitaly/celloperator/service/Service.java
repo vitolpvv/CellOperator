@@ -11,6 +11,7 @@ public interface Service<T, K> {
     void add(T dto);
     void update(T dto);
     void remove(T dto);
+    void removeWith(K id);
     T get(K id);
     List<T> getAll();
 }

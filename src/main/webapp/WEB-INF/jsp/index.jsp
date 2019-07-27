@@ -1,15 +1,10 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Title</title>
+    <title>Cell Operator</title>
 </head>
 <body>
-<ul>
-<c:forEach items="${roles}" var="role">
-    <li>${role.id} ${role.name}</li>
-</c:forEach>
-</ul>
+    <h1>Hello</h1>
 </body>
 </html>

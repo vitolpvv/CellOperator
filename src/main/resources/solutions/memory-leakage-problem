@@ -1,0 +1,12 @@
+При redeploy приложения и перезапуске/остановке сервера Tomcat могут возникать проблемы с DriverManager связанные с драйвером MySQL.
+
+Решение:
+1. Добавит драйвер MySQL (mysql-connector-java-xxx.jar) в папку "$CATALINA_HOME$/lib".
+
+2. Зависимость "mysql-connector-java" отметить как "provided":
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.version}</version>
+      <scope>provided</scope>
+    </dependency>

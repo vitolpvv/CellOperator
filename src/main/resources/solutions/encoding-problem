@@ -1,0 +1,66 @@
+Есть два уровня, где может возникнуть проблема с кодировкой кириллицы.
+
+1 уровень - Клиент-Сервер.
+Проявление - результат отправки кириллицы на сервер "Ð¾ÑÐ²Ð´Ð°Ð»Ð¾Ñ".
+Для решения этой проблемы необходимо добавить фильтр в конфигурацию приложения.
+
+а) web.xml
+<web-app ...>
+    ...
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>
+
+б) Java-config (не проверял, т.к. использую XML-config)
+
+public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+    ...
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter filter = new CharacterEncodingFilter("UTF-8", true);
+        return new Filter[] {filter};
+    }
+    ...
+}
+
+или
+
+public class WebInit implements WebApplicationInitializer {
+    ...
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        ...
+        EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
+
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+
+        FilterRegistration.Dynamic characterEncoding = servletContext.addFilter("characterEncoding", characterEncodingFilter);
+        characterEncoding.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
+        ...
+    }
+    ...
+}
+
+2 уровень - Сервер-БД.
+Проявление - результат записи кариллицы в БД "????????????".
+Может возникнуть из-за разницы кодировок БД и Сервера.
+
+Решение представлено для MySQL, но думаю, для других СУБД существует подобное.
+Самый простой способ - добавить в 'url' подключения к БД параметр "characterEncoding=UTF-8"
+Пример - "jdbc:mysql://<host>:<port>/<db_name>?characterEncoding=UTF-8"

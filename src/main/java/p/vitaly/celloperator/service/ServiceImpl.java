@@ -42,6 +42,11 @@ public abstract class ServiceImpl<T, S> implements Service<S, Integer> {
     }
 
     @Override
+    public void removeWith(Integer id) {
+        dao.removeWith(id);
+    }
+
+    @Override
     public S get(Integer id) {
         return converter.toDto(dao.get(id));
     }
