@@ -1,0 +1,68 @@
+Упрощенная структура проекта:
+project
+|---src
+|   |---main
+|   |   |---java
+|   |   |---webapp
+|   |       |---WEB-INF
+|   |       |   |---jsp
+|   |       |       |---index.jsp
+|   |       |---resources
+|   |           |---img
+|   |           |---css
+|   |           |---js
+|   |---test
+|---pom.xml
+
+Чтобы получить доступ к статическим ресурсам (img, css, js) из *.jsp необходимо выполнить следущее:
+
+1. Конфигурация ресурсов.
+
+а) XML
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    ...
+    <!-- Конфигурация ресурсов
+        'mapping' - ссылка для доступа к ресурсам (http://<host>:<port>/<project>/<mapping>)
+        'location' - размещение ресурсов в проекте относительно папки 'webapp' -->
+    <mvc:resources mapping="resources/**" location="resources/"/>
+    ...
+</beans>
+
+б) Java
+@Configuration
+@EnableWebMvc
+public class MvcConfig implements WebMvcConfigurer {
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+          .addResourceHandler("/resources/**")
+          .addResourceLocations("resources/");
+    }
+}
+
+После этого ресурсы будут доступны по ссылке 'http://<host>:<port>/<project>/resources/...'
+
+2. Доступ к ресурсам из jsp-файла
+
+Не важно, где в проекте расположены jsp-файлы, итоговая ссылка определяется аннотацией @RequestMapping контроллера.
+IDE ничего не знает об этом и предлагает пути к ресурсам в соответствии со структурой проекта.
+
+Пример:
+В приведенной выше структуре для доступа к css из index.jsp IDE предложит путь "../../resources/css/<имя_файл>".
+Контроллер, отдающий index.jsp, помечен аннотацией @RequestMapping(""), страница доступна по ссылке
+'http://<host>:<port>/<project>/'.
+Итоговая ссылка на css 'http://<host>:<port>/resources/css/<имя_файла>'. Ресурс не доступен.
+Ресурсы располагаются 'http://<host>:<port>/<project>/resources/...' в соответствии с конфигурацией.
+
+Решение:
+Чтобы корректно указать ссылку на ресурс, необходимо учесть итоговую ссылку на страницу и ссылку на ресурсы.
+Правильный путь к css в index.jsp - "resources/css/<имя_файл>".
+Итоговая ссылка на css при запросе index.jsp - "http://<host>:<port>/<project>/resources/css/<имя_файл>".
+
+Можно указать путь к ресурсу относительно хоста - "/<project>/resources/...".
+Но это минус в карму)
