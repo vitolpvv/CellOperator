@@ -8,7 +8,7 @@ import java.util.List;
  * @param <K> - 'Primary Key' class
  */
 public interface Dao<T, K> {
-    void add(T entity);
+    K add(T entity);
     void update(T entity);
     void remove(T entity);
     void removeWith(K id);

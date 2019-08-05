@@ -1,7 +1,9 @@
-package p.vitaly.celloperator.service;
+package p.vitaly.celloperator.service.impl;
 
+import org.springframework.transaction.annotation.Transactional;
 import p.vitaly.celloperator.converter.Converter;
 import p.vitaly.celloperator.dao.Dao;
+import p.vitaly.celloperator.service.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,21 +29,25 @@ public abstract class ServiceImpl<T, S> implements Service<S, Integer> {
     }
 
     @Override
-    public void add(S dto) {
-        dao.add(converter.toEntity(dto));
+    @Transactional
+    public Integer add(S dto) {
+        return dao.add(converter.toEntity(dto));
     }
 
     @Override
+    @Transactional
     public void update(S dto) {
         dao.update(converter.toEntity(dto));
     }
 
     @Override
+    @Transactional
     public void remove(S dto) {
         dao.remove(converter.toEntity(dto));
     }
 
     @Override
+    @Transactional
     public void removeWith(Integer id) {
         dao.removeWith(id);
     }

@@ -8,7 +8,7 @@ import java.util.List;
  * @param <K> - 'id' ('db entity' primary key class)
  */
 public interface Service<T, K> {
-    void add(T dto);
+    K add(T dto);
     void update(T dto);
     void remove(T dto);
     void removeWith(K id);

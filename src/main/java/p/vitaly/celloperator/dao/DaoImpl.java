@@ -1,5 +1,7 @@
 package p.vitaly.celloperator.dao;
 
+import p.vitaly.celloperator.entity.GeneratedIdEntity;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -8,10 +10,10 @@ import java.util.List;
  * Basic abstract Data Access Object implementation with Integer Primary Key.
  * @param <T> - 'db entity' class.
  */
-public abstract class DaoImpl<T> implements Dao<T, Integer> {
+public abstract class DaoImpl<T extends GeneratedIdEntity> implements Dao<T, Integer> {
 
     @PersistenceContext
-    EntityManager em;
+    protected EntityManager em;
 
     private final Class<T> entityClass;
 
@@ -20,8 +22,9 @@ public abstract class DaoImpl<T> implements Dao<T, Integer> {
     }
 
     @Override
-    public void add(T entity) {
+    public Integer add(T entity) {
         em.persist(entity);
+        return entity.getId();
     }
 
     @Override

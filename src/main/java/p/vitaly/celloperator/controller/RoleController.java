@@ -6,14 +6,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import p.vitaly.celloperator.dto.user.RoleDto;
-import p.vitaly.celloperator.service.RoleService;
+import p.vitaly.celloperator.service.Service;
 
 @Controller
 @RequestMapping("role")
 public class RoleController {
 
     @Autowired
-    private RoleService service;
+    private Service<RoleDto, Integer> service;
 
     @GetMapping
     public String view(Model model) {
@@ -33,6 +33,6 @@ public class RoleController {
     @Transactional
     public String deleteRole(@PathVariable("id") Integer id) {
         service.removeWith(id);
-        return "redirect:/role";
+        return "redirect:../role";
     }
 }

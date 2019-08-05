@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import p.vitaly.celloperator.entity.GeneratedIdEntity;
 import p.vitaly.celloperator.entity.option.OptionEntity;
+import p.vitaly.celloperator.entity.util.NameDescription;
+import p.vitaly.celloperator.entity.util.PaymentPeriodEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -16,11 +18,28 @@ import java.util.List;
 @Table(name = "tariff", schema = "celloperator")
 public class TariffEntity extends GeneratedIdEntity {
 
-    @Column(name = "name", nullable = false, unique = true)
-    private String name;
+//    @Column(name = "name", nullable = false, unique = true)
+//    private String name;
+
+    @Embedded
+    @AttributeOverrides(value = {
+            @AttributeOverride(
+                    name = "name",
+                    column = @Column(name = "name", nullable = false, unique = true)
+            ),
+            @AttributeOverride(
+                    name = "description",
+                    column = @Column(name = "description")
+            )}
+    )
+    private NameDescription nameDescription;
 
     @Column(name = "price_use", nullable = false)
     private BigDecimal priceUse;
+
+    @ManyToOne
+    @JoinColumn(name = "payment_period_id")
+    private PaymentPeriodEntity paymentPeriod;
 
     @Column(name = "price_set")
     private BigDecimal priceSet;

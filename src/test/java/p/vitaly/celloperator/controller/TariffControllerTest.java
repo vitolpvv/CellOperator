@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("../../../../../webapp/WEB-INF/web.xml")
 @ContextConfiguration(locations = {"classpath:config/dispatcher-servlet.xml"})
-public class IndexControllerTest {
+public class TariffControllerTest {
 
     @Autowired
     private WebApplicationContext wac;
@@ -37,6 +37,6 @@ public class IndexControllerTest {
 
         assertNotNull(servletContext);
         assertTrue(servletContext instanceof MockServletContext);
-        assertNotNull(wac.getBean("indexController"));
+        assertNotNull(wac.getBean("tariffController"));
     }
 }

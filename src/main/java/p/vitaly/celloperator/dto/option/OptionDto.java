@@ -1,6 +1,7 @@
 package p.vitaly.celloperator.dto.option;
 
 import lombok.Data;
+import p.vitaly.celloperator.dto.PaymentPeriodDto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,8 +12,13 @@ import java.util.List;
 public class OptionDto implements Serializable {
     private Integer id;
     private String name;
+    private String description;
     private BigDecimal priceUse;
-    private BigDecimal priseSet;
+    private BigDecimal priceSet;
+    private Integer payPeriodId;
+    private String payPeriodName;
+    private boolean permanent;
     private boolean archived;
+    private Integer parentId;
     private List<OptionDto> children = new ArrayList<>();
 }
