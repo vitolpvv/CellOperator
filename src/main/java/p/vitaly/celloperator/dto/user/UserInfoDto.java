@@ -7,8 +7,8 @@ import java.time.LocalDate;
 @Data
 public class UserInfoDto {
     private Integer id;
-    private UserDto user;
-    private LocalDate birthday;
+    private Integer userId;
+    private String birthday;
     private String passport;
     private String address;
     private String email;

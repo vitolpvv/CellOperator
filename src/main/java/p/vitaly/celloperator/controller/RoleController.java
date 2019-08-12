@@ -11,7 +11,6 @@ import p.vitaly.celloperator.service.Service;
 @Controller
 @RequestMapping("role")
 public class RoleController {
-
     @Autowired
     private Service<RoleDto, Integer> service;
 

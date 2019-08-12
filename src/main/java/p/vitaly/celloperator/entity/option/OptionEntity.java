@@ -3,13 +3,13 @@ package p.vitaly.celloperator.entity.option;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import p.vitaly.celloperator.entity.GeneratedIdEntity;
-import p.vitaly.celloperator.entity.util.NameDescription;
-import p.vitaly.celloperator.entity.util.PaymentPeriodEntity;
+import p.vitaly.celloperator.entity.NameDescription;
+import p.vitaly.celloperator.entity.PaymentPeriodEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -17,8 +17,6 @@ import java.util.List;
 @Table(name = "tariff_option", schema = "celloperator")
 public class OptionEntity extends GeneratedIdEntity {
 
-//    @Column(name = "name", nullable = false, unique = true)
-//    private String name;
     @Embedded
     @AttributeOverrides(value = {
             @AttributeOverride(
@@ -53,7 +51,7 @@ public class OptionEntity extends GeneratedIdEntity {
     private PaymentPeriodEntity paymentPeriod;
 
     @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<OptionEntity> children = new ArrayList<>();
+    private Set<OptionEntity> children = new HashSet<>();
 
     public void addChild(OptionEntity option) {
         children.add(option);

@@ -1,27 +1,22 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE HTML>
 <html>
-<head>
-    <title>Тарифы</title>
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <link href="css/default.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-    <div id="header">
-        <table>
-            <tr>
-                <td>
-                    <a href="tariffs"><img alt="logo" src="favicon.ico"></a>
-                    <span>Тарифы</span>
-                </td>
-                <td style="width: 1%">
-                    <div class="button" onclick="">Личный кабинет</div>
-                </td>
-            </tr>
-        </table>
-    </div>
-<div id="content" style="border: 1px solid black">
-        <h1>Hello</h1>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<t:genericpage title="Тарифы">
+    <jsp:attribute name="header">
+        <t:header>
+        <jsp:body>
+            <t:titleLogin title="Тарифы"/>
+        </jsp:body>
+        </t:header>
+    </jsp:attribute>
+    <jsp:body>
+<div class="card-deck">
+    <c:forEach items="${tariffs}" var="tariff">
+        <t:tariffCard tariff="${tariff}"/>
+    </c:forEach>
 </div>
-</body>
-</html>
+    </jsp:body>
+</t:genericpage>

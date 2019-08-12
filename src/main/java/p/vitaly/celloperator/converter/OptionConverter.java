@@ -1,10 +1,10 @@
 package p.vitaly.celloperator.converter;
 
 import org.springframework.stereotype.Component;
-import p.vitaly.celloperator.dto.option.OptionDto;
+import p.vitaly.celloperator.dto.OptionDto;
 import p.vitaly.celloperator.entity.option.OptionEntity;
-import p.vitaly.celloperator.entity.util.NameDescription;
-import p.vitaly.celloperator.entity.util.PaymentPeriodEntity;
+import p.vitaly.celloperator.entity.NameDescription;
+import p.vitaly.celloperator.entity.PaymentPeriodEntity;
 
 import java.util.stream.Collectors;
 

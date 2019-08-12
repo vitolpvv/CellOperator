@@ -15,7 +15,7 @@ public class UserDao extends DaoImpl<UserEntity> {
     }
 
     public List<UserEntity> getAllClients(){
-        TypedQuery<UserEntity> tq = em.createQuery("from UserEntity u where u.role.name = :roleName", UserEntity.class);
+        TypedQuery<UserEntity> tq = em.createQuery("select u from UserEntity u join u.roles r where r.name = :roleName", UserEntity.class);
         tq.setParameter("roleName", "CLIENT");
         return tq.getResultList();
     }

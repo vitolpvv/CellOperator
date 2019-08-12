@@ -3,13 +3,13 @@ package p.vitaly.celloperator.entity.contract;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import p.vitaly.celloperator.entity.GeneratedIdEntity;
+import p.vitaly.celloperator.entity.TariffEntity;
 import p.vitaly.celloperator.entity.option.OptionEntity;
-import p.vitaly.celloperator.entity.tariff.TariffEntity;
 import p.vitaly.celloperator.entity.user.UserEntity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -28,9 +28,12 @@ public class ContractEntity extends GeneratedIdEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
+    @OneToOne(mappedBy = "contract", cascade = CascadeType.ALL, orphanRemoval = true)
+    private BlockedContractEntity blocker;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "contract_has_option",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "option_id"))
-    private List<OptionEntity> options = new ArrayList<>();
+    private Set<OptionEntity> options = new HashSet<>();
 }

@@ -15,52 +15,51 @@ import java.util.List;
  */
 public abstract class ServiceImpl<T, S> implements Service<S, Integer> {
 
-    protected Dao<T, Integer> dao;
-    protected Converter<T, S> converter;
-
-    /**
-     * Providing appropriate dao and 'db entity' <-> 'dto' converter on service creation.
-     * @param dao - appropriate Doa instance.
-     * @param converter - appropriate Converter instance.
-     */
-    protected ServiceImpl(Dao<T, Integer> dao, Converter<T, S> converter) {
-        this.dao = dao;
-        this.converter = converter;
-    }
-
     @Override
     @Transactional
     public Integer add(S dto) {
-        return dao.add(converter.toEntity(dto));
+        return getDao().add(getConverter().toEntity(dto));
     }
 
     @Override
     @Transactional
     public void update(S dto) {
-        dao.update(converter.toEntity(dto));
+        getDao().update(getConverter().toEntity(dto));
+    }
+
+    @Override
+    @Transactional
+    public Integer save(S dto) {
+        return getDao().save(getConverter().toEntity(dto));
     }
 
     @Override
     @Transactional
     public void remove(S dto) {
-        dao.remove(converter.toEntity(dto));
+        getDao().remove(getConverter().toEntity(dto));
     }
 
     @Override
     @Transactional
     public void removeWith(Integer id) {
-        dao.removeWith(id);
+        getDao().removeWith(id);
     }
 
     @Override
+    @Transactional
     public S get(Integer id) {
-        return converter.toDto(dao.get(id));
+        return getConverter().toDto(getDao().get(id));
     }
 
     @Override
+    @Transactional
     public List<S> getAll() {
         List<S> dtos = new ArrayList<>();
-        dao.getAll().forEach(item -> dtos.add(converter.toDto(item)));
+        getDao().getAll().forEach(item -> dtos.add(getConverter().toDto(item)));
         return dtos;
     }
+
+    abstract Dao<T, Integer> getDao();
+
+    abstract Converter<T, S> getConverter();
 }

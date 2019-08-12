@@ -12,4 +12,8 @@ import java.io.Serializable;
 public class RoleDto implements Serializable {
     private Integer id;
     private String name;
+
+    public RoleDto(Integer id) {
+        this.id = id;
+    }
 }

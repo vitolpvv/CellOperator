@@ -10,6 +10,7 @@ import java.util.List;
 public interface Service<T, K> {
     K add(T dto);
     void update(T dto);
+    K save(T dto);
     void remove(T dto);
     void removeWith(K id);
     T get(K id);

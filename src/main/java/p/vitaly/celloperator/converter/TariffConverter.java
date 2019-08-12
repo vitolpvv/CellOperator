@@ -2,10 +2,10 @@ package p.vitaly.celloperator.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import p.vitaly.celloperator.dto.tariff.TariffDto;
-import p.vitaly.celloperator.entity.tariff.TariffEntity;
-import p.vitaly.celloperator.entity.util.NameDescription;
-import p.vitaly.celloperator.entity.util.PaymentPeriodEntity;
+import p.vitaly.celloperator.dto.TariffDto;
+import p.vitaly.celloperator.entity.TariffEntity;
+import p.vitaly.celloperator.entity.NameDescription;
+import p.vitaly.celloperator.entity.PaymentPeriodEntity;
 
 @Component
 public class TariffConverter implements Converter<TariffEntity, TariffDto> {

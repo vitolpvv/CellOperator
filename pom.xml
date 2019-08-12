@@ -113,15 +113,15 @@
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
         <version>3.6.0.1398</version>
-        <!--executions>
-          <execution>
+        <executions>
+          <!--execution>
             <id>sonar-scan</id>
             <phase>test</phase>
             <goals>
               <goal>sonar</goal>
             </goals>
-          </execution>
-        </executions-->
+          </execution-->
+        </executions>
       </plugin>
     </plugins>
   </build>

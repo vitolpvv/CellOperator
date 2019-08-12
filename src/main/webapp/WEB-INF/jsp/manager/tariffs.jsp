@@ -1,47 +1,41 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Управление тарифами</title>
-    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-    <link href="../css/default.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div id="header">
-    <table>
-        <tr>
-            <td>
-                <a href="../tariffs"><img alt="logo" src="../favicon.ico"></a>
-                <span><a href="clients">Клиенты</a></span>
-                <span>Тарифы</span>
-                <span><a href="options">Опции</a></span>
-            </td>
-            <td style="width: 1%">
-                <input type="text">
-            </td>
-            <td style="width: 1%">
-                <div title="Добавить тариф" class="button" onclick="location.href='tariffs/add'">+</div>
-            </td>
-            <td style="width: 1%">
-                <div class="button" onclick="">Выйти</div>
-            </td>
-        </tr>
-    </table>
-</div>
-<div id="content">
-    <table>
-        <c:forEach items="${tariffs}" var="tariff">
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<t:genericpage title="Управление тарифами">
+    <jsp:attribute name="header">
+        <t:header>
+            <jsp:body>
+                <t:managerNavigation activeIndex="1"/>
+            </jsp:body>
+        </t:header>
+    </jsp:attribute>
+    <jsp:body>
+        <table class="table table-hover">
+            <thead>
             <tr>
-                <td class="padding20px borderBottom">
-                    <a href="tariffs/edit?id=${tariff.id}">${tariff.name}</a>
-                </td>
-                <td class="padding20px borderBottom" style="width: 1%">
-                    <div class="button" onclick="location.href='tariffs/delete?id=${tariff.id}'">Удалить</div>
-                </td>
+                <th>Название</th>
+                <th style="text-align: center; width: 1%">
+                    <a class="text-success" href="manager/tariffs/add">Создать</a>
+                </th>
             </tr>
-        </c:forEach>
-    </table>
-</div>
-</body>
-</html>
+            </thead>
+            <tbody>
+                <c:forEach items="${tariffs}" var="tariff">
+                    <tr>
+                        <td>${tariff.name}</td>
+                        <td>
+                            <div class="d-flex">
+                                <a class="text-success mr-3" href="manager/tariffs/edit?id=${tariff.id}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="text-success" href="manager/tariffs/delete?id=${tariff.id}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </jsp:body>
+</t:genericpage>

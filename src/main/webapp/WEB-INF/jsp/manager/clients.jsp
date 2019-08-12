@@ -1,35 +1,41 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Управление клиентами</title>
-    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-    <link href="../css/default.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div id="header">
-    <table>
-        <tr>
-            <td>
-                <a href="../tariffs"><img alt="logo" src="../favicon.ico"></a>
-                <span>Клиенты</span>
-                <span><a href="tariffs">Тарифы</a></span>
-                <span><a href="options">Опции</a></span>
-            </td>
-            <td style="width: 1%">
-                <input type="text">
-            </td>
-            <td style="width: 1%">
-                <div title="Добавить клиента" class="button" onclick="location.href='clients/add'">+</div>
-            </td>
-            <td style="width: 1%">
-                <div class="button" onclick="">Выйти</div>
-            </td>
-        </tr>
-    </table>
-</div>
-<div id="content" style="border: 1px solid black">
-    <h1>Hello</h1>
-</div>
-</body>
-</html>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<t:genericpage title="Управление клиентами">
+    <jsp:attribute name="header">
+        <t:header>
+            <jsp:body>
+                <t:managerNavigation activeIndex="2"/>
+            </jsp:body>
+        </t:header>
+    </jsp:attribute>
+    <jsp:body>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Название</th>
+                <th style="text-align: center; width: 1%">
+                    <a class="text-success" href="manager/clients/add">Создать</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${users}" var="user">
+                <tr>
+                    <td>${user.firstName} ${user.lastName}</td>
+                    <td>
+                        <div class="d-flex">
+                            <a class="text-success mr-2" href="manager/clients/edit?id=${user.id}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="text-success" href="manager/clients/delete?id=${user.id}">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </jsp:body>
+</t:genericpage>

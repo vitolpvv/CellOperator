@@ -2,7 +2,7 @@ package p.vitaly.celloperator.converter;
 
 import org.springframework.stereotype.Component;
 import p.vitaly.celloperator.dto.PaymentPeriodDto;
-import p.vitaly.celloperator.entity.util.PaymentPeriodEntity;
+import p.vitaly.celloperator.entity.PaymentPeriodEntity;
 
 @Component
 public class PaymentPeriodConverter implements Converter<PaymentPeriodEntity, PaymentPeriodDto> {

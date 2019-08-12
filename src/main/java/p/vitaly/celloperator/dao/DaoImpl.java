@@ -30,7 +30,16 @@ public abstract class DaoImpl<T extends GeneratedIdEntity> implements Dao<T, Int
     @Override
     public void update(T entity) {
         em.merge(entity);
+    }
 
+    @Override
+    public Integer save(T entity) {
+        if (entity.getId() == null) {
+            em.persist(entity);
+        } else {
+            em.merge(entity);
+        }
+        return entity.getId();
     }
 
     @Override

@@ -1,18 +1,17 @@
 package p.vitaly.celloperator.dto.user;
 
 import lombok.Data;
-import p.vitaly.celloperator.dto.contract.ContractDto;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 public class UserDto implements Serializable {
     private Integer id;
-    private String name;
-    private String login;
+    private String firstName;
+    private String lastName;
     private boolean blocked;
-    private RoleDto role;
-    private UserInfoDto userInfo;
-    private List<ContractDto> contracts;
+    private UserInfoDto userInfo = new UserInfoDto();
+    private Set<Integer> roleIds = new HashSet<>();
 }

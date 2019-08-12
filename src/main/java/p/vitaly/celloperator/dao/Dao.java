@@ -10,6 +10,7 @@ import java.util.List;
 public interface Dao<T, K> {
     K add(T entity);
     void update(T entity);
+    K save(T entity);
     void remove(T entity);
     void removeWith(K id);
     T get(K id);

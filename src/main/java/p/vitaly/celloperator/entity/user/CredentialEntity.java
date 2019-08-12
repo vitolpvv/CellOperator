@@ -12,6 +12,9 @@ import javax.persistence.*;
 @Table(name = "credential", schema = "celloperator")
 public class CredentialEntity extends GeneratedIdEntity {
 
+    @Column(name = "login")
+    private String login;
+
     @Column(name = "pwd_md5", nullable = false)
     private String password;
 
